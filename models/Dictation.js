@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
-  dictation: {
+  dicData: {
     type: Array,
     required: true,
   },
