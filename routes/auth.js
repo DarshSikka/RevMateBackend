@@ -40,6 +40,7 @@ router.post("/login", cors(), (req, res) => {
       res.send({
         error: false,
         message: "Authorized",
+        userid: result._id,
       });
     }
   });
