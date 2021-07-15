@@ -35,7 +35,7 @@ router.post("/delete", (req, res) => {
 });
 router.get("/dictationsforuser", cors(), (req, res) => {
   const { user } = req.query;
-  Dictation.find({ _id: user }, (err, result) => {
+  Dictation.find({ createdBy: user }, (err, result) => {
     if (err) throw err;
     if (!result) {
       res.send({ error: true, message: "User not found" });
