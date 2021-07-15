@@ -35,7 +35,7 @@ router.post("/delete", (req, res) => {
 });
 router.get("/dictationsforuser", (req, res) => {
   const { user } = req.body;
-  Dictation.findOne({ createdBy: user }, (err, result) => {
+  Dictation.find({ createdBy: user }, (err, result) => {
     if (err) throw err;
   });
 });

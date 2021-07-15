@@ -5,7 +5,8 @@ const cors = require("cors");
 router.post("/signup", cors(), (req, res) => {
   const { username, password, profile } = req.body;
   console.log(req.body);
-  if (password.length > 0) {
+  if (password.length < 8) {
+    return res.send("Password length should be at least 8 characters long");
   }
   User.findOne({ username }, (err, result) => {
     if (err) throw err;
