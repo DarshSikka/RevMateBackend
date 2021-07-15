@@ -26,4 +26,11 @@ router.get("/dictation/:id", (req, res) => {
     }
   });
 });
+router.post("/delete", (req, res) => {
+  const { id } = req.body;
+  Dictation.deleteOne({ _id: id }, (err) => {
+    if (err) res.send({ error: true, message: err });
+    res.send({ error: false, message: "Deleted that dictation" });
+  });
+});
 module.exports = router;

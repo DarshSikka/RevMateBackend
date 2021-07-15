@@ -5,9 +5,11 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const auth = require("./routes/auth");
+const dictation = require("./routes/dictation");
 app.use(parser.json());
 app.use(cors());
 app.use("/auth", auth);
+app.use("/dictation", dictation);
 require("dotenv").config();
 mongoose.connect(
   process.env.DB_URI,
