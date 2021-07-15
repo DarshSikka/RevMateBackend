@@ -37,6 +37,13 @@ router.get("/dictationsforuser", (req, res) => {
   const { user } = req.body;
   Dictation.find({ createdBy: user }, (err, result) => {
     if (err) throw err;
+    if (!result) {
+      res.send({ error: true, message: "User not found" });
+    }
+    res.send({
+      error: false,
+      message: result,
+    });
   });
 });
 module.exports = router;
