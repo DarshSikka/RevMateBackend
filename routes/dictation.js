@@ -33,7 +33,7 @@ router.post("/delete", (req, res) => {
     res.send({ error: false, message: "Deleted that dictation" });
   });
 });
-router.get("/dictationsforuser", (req, res) => {
+router.get("/dictationsforuser", cors(), (req, res) => {
   const { user } = req.body;
   Dictation.find({ createdBy: user }, (err, result) => {
     if (err) throw err;
