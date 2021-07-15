@@ -3,12 +3,12 @@ const cors = require("cors");
 const Dictation = require("../models/Dictation");
 const router = express.Router();
 router.post("/new", cors(), (req, res) => {
-  const { publiclyVisible, questions, answers, createdBy } = req.body;
+  const { publiclyVisible, dicData, createdBy, name } = req.body;
   const newDic = new Dictation({
     publiclyVisible,
-    questions,
-    answers,
+    dicData,
     createdBy,
+    name,
   });
   res.send(newDic);
   newDic.save();

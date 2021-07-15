@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
-  questions: {
-    type: Array,
-    required: true,
-  },
-  answers: {
+  dictation: {
     type: Array,
     required: true,
   },
@@ -13,6 +9,10 @@ const schema = new mongoose.Schema({
     required: true,
   },
   createdBy: {
+    type: String,
+    required: true,
+  },
+  name: {
     type: String,
     required: true,
   },
