@@ -37,7 +37,7 @@ router.post("/login", cors(), (req, res) => {
         message: "Wrong Password/Username",
       });
     } else {
-      res.sen({
+      res.send({
         error: false,
         message: "Authorized",
       });
