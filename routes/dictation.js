@@ -22,7 +22,7 @@ router.get("/dictation/:id", (req, res) => {
         message: "Not Found",
       });
     } else {
-      res.send({ ...result, error: false });
+      res.send(result);
     }
   });
 });
