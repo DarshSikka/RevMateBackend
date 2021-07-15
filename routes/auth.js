@@ -45,4 +45,13 @@ router.post("/login", cors(), (req, res) => {
     }
   });
 });
+router.get("/user/:id", (req, res) => {
+  User.findOne({ _id: req.params.id }, (err, result) => {
+    if (!result) {
+      res.send({ error: true, message: "User not found" });
+    } else {
+      res.send({ error: false, message: result });
+    }
+  });
+});
 module.exports = router;
