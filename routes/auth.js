@@ -58,4 +58,12 @@ router.get("/user/:id", (req, res) => {
     }
   });
 });
+router.get("profile", (req, res) => {
+  const { user } = req.query;
+  User.findOne({ username: user }, (err, result) => {
+    if (result) {
+      res.send(result.profile);
+    }
+  });
+});
 module.exports = router;
