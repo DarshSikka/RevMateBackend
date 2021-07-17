@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const Dictation = require("../models/Dictation");
+const User = require("../models/User");
 const router = express.Router();
 router.post("/new", cors(), (req, res) => {
   const { publiclyVisible, dicData, createdBy, name } = req.body;
@@ -35,14 +36,16 @@ router.post("/delete", (req, res) => {
 });
 router.get("/dictationsforuser", cors(), (req, res) => {
   const { user } = req.query;
-  Dictation.find({ createdBy: user }, (err, result) => {
-    if (err) throw err;
-    if (!result) {
-      res.send({ error: true, message: "User not found" });
-    }
-    res.send({
-      error: false,
-      message: result,
+  User.findOne({ _id: user }, (err, result) => {
+    Dictation.find({ createdBy: result.username }, (erro, resp) => {
+      if (erro) throw erro;
+      if (!resp) {
+        return res.send({ error: true, message: "User not found" });
+      }
+      res.send({
+        error: false,
+        message: resp,
+      });
     });
   });
 });
