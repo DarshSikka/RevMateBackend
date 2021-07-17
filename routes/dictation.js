@@ -46,4 +46,9 @@ router.get("/dictationsforuser", cors(), (req, res) => {
     });
   });
 });
+router.get("/public", cors(), (req, res) => {
+  Dictation.find({ publiclyVisible: true }, (err, result) => {
+    res.send(result);
+  });
+});
 module.exports = router;
