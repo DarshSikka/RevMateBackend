@@ -38,17 +38,18 @@ router.get("/dictationsforuser", cors(), (req, res) => {
   const { user } = req.query;
   User.findOne({ _id: user }, (err, result) => {
     if (!result) {
-      resp.send({ error: true, message: "User not found" });
+      return res.send({ error: true, message: "User not found" });
     }
     Dictation.find({ createdBy: result.username }, (erro, resp) => {
       if (erro) throw erro;
       if (!resp) {
         return res.send({ error: true, message: "User not found" });
+      } else {
+        res.send({
+          error: false,
+          message: resp,
+        });
       }
-      res.send({
-        error: false,
-        message: resp,
-      });
     });
   });
 });
